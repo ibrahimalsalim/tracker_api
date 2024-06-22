@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const { ContentType } = require("../config/database");
-const { validateNewContentType, validateUpdateContentType } = require("../models/contentType");
+const { validateNewContentType, validateUpdateContentType } = require("../models/contenttype");
 const paginate = require("../utils/pagination")
 
 /**
