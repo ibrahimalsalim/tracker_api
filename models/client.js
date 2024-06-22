@@ -26,7 +26,7 @@ ClientModel = (sequelize) => {
       allowNull: false
     },
     address: {
-      type: DataTypes.STRING(30),
+      type: DataTypes.STRING(60),
       allowNull: false
     },
     phone_number: {
