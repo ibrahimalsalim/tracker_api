@@ -10,8 +10,11 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/auth", require("./routes/auth"));
 
-app.use("/api/contenttype", require("./routes/contentTypes"));
-app.use("/api/state", require("./routes/states"));
+app.use("/api/centers", require("./routes/centers"));
+app.use("/api/clients", require("./routes/clients"));
+
+app.use("/api/contenttypes", require("./routes/contentTypes"));
+app.use("/api/states", require("./routes/states"));
 app.use("/api/usertypes", require("./routes/userTypes"));
 
 
