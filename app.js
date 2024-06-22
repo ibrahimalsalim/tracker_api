@@ -13,10 +13,7 @@ app.use(logger)
 
 
 
-app.use(cors({
-    origin: "http://127.0.0.1:3001",
-    methods: ["GET", "POST", "PUT", "DELETE"]
-}));
+app.use(cors());
 app.use(helmet());
 
 
