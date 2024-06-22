@@ -11,9 +11,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(logger)
 
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+// Preflight request handling
+app.options('*', cors());
 
 
-app.use(cors());
 app.use(helmet());
 
 
