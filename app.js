@@ -8,10 +8,11 @@ app.use(logger)
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use("/api/auth", require("./routes/auth"));
 
-app.use("/api/usertypes", require("./routes/userTypes"));
-app.use("/api/state", require("./routes/states"));
 app.use("/api/contenttype", require("./routes/contentTypes"));
+app.use("/api/state", require("./routes/states"));
+app.use("/api/usertypes", require("./routes/userTypes"));
 
 
 app.use(notFound);

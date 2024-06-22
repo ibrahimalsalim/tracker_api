@@ -12,7 +12,7 @@ ContentTypeModel = (sequelize) => {
       allowNull: false
     },
     description: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.STRING(200),
       allowNull: false
     },
     price: {

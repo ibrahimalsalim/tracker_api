@@ -896,6 +896,7 @@ const insertInitialData = async () => {
         //     phone_number: '963922345685'
         // }
     ]);
+    
     await ShipmentPriority.bulkCreate([
         { priority: "عادي", additional_wages: 0 },
         { priority: "مستعجل", additional_wages: 30 },
