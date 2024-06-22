@@ -6,7 +6,6 @@ app.use(cors({
     headers: ["Content-Type"],
     credentials: true,
 }));
-));
 const { notFound, errorHanlder } = require("./middlewares/errors")
 const logger = require("./middlewares/logger")
 
