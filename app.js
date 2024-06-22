@@ -2,11 +2,19 @@ const express = require("express");
 const app = express();
 const { notFound, errorHanlder } = require("./middlewares/errors")
 const logger = require("./middlewares/logger")
+const cors = require("cors");
+const helmet = require("helmet");
 require("dotenv").config()
-app.use(logger)
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(logger)
+
+
+
+app.use(cors());
+app.use(helmet());
 
 
 app.use("/api/auth", require("./routes/auth"));
