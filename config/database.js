@@ -1,6 +1,8 @@
 const { Sequelize } = require('sequelize');
 
 const { UserTypeModel } = require('../models/usertype');
+const { StateModel } = require('../models/state');
+const { ContentTypeModel } = require('../models/contenttype');
 
 // Create Sequelize instance
 const sequelize = new Sequelize(
@@ -18,6 +20,8 @@ const sequelize = new Sequelize(
 
 
 const UserType = UserTypeModel(sequelize);
+const State = StateModel(sequelize);
+const ContentType = ContentTypeModel(sequelize);
 
 
 const testconnection = async () => {
@@ -47,4 +51,6 @@ testconnection();
 
 module.exports = {
     UserType,
+    State,
+    ContentType
 }
