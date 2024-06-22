@@ -1,9 +1,10 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 app.use(cors());
 const { notFound, errorHanlder } = require("./middlewares/errors")
 const logger = require("./middlewares/logger")
-const cors = require("cors");
+
 // const helmet = require("helmet");
 require("dotenv").config()
 
