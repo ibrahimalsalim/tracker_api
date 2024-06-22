@@ -639,262 +639,262 @@ const insertInitialData = async () => {
             address: '654 Ash St, Idlib, Syria',
             phone_number: '963902345682'
         },
-        {
-            national_id: '11223344556',
-            first_name: 'Sara',
-            last_name: 'Al-Fayez',
-            date_of_birth: '1974-04-25',
-            address: '987 Sycamore St, As-Suwayda, Syria',
-            phone_number: '963912345683'
-        },
-        {
-            national_id: '22334455667',
-            first_name: 'Hassan',
-            last_name: 'Al-Hussein',
-            date_of_birth: '1993-03-18',
-            address: '321 Cedar St, Damascus, Syria',
-            phone_number: '963922345682'
-        },
-        {
-            national_id: '33445566778',
-            first_name: 'Laila',
-            last_name: 'Al-Fakhouri',
-            date_of_birth: '1980-06-30',
-            address: '456 Walnut St, Aleppo, Syria',
-            phone_number: '963932345682'
-        },
-        {
-            national_id: '44556677889',
-            first_name: 'Mahmoud',
-            last_name: 'Al-Naimi',
-            date_of_birth: '1987-09-03',
-            address: '789 Maple St, Homs, Syria',
-            phone_number: '963942345682'
-        },
-        {
-            national_id: '55667788990',
-            first_name: 'Yasmin',
-            last_name: 'Al-Rifai',
-            date_of_birth: '1990-11-26',
-            address: '321 Elm St, Latakia, Syria',
-            phone_number: '963952345682'
-        },
-        {
-            national_id: '66778899001',
-            first_name: 'Karim',
-            last_name: 'Al-Khayat',
-            date_of_birth: '1989-01-19',
-            address: '456 Maple St, Aleppo, Syria',
-            phone_number: '963962345682'
-        },
-        {
-            national_id: '77889900112',
-            first_name: 'Aisha',
-            last_name: 'Al-Mudallal',
-            date_of_birth: '1992-08-22',
-            address: '789 Oak St, Homs, Syria',
-            phone_number: '963972345682'
-        },
-        {
-            national_id: '88990011223',
-            first_name: 'Fadi',
-            last_name: 'Al-Hilal',
-            date_of_birth: '1977-12-30',
-            address: '321 Pine St, Latakia, Syria',
-            phone_number: '963982345682'
-        },
-        {
-            national_id: '99001122334',
-            first_name: 'Rana',
-            last_name: 'Al-Hindi',
-            date_of_birth: '1985-10-22',
-            address: '654 Cedar St, Tartus, Syria',
-            phone_number: '963992345682'
-        },
-        {
-            national_id: '00112233445',
-            first_name: 'Tamer',
-            last_name: 'Al-Zein',
-            date_of_birth: '1990-12-05',
-            address: '987 Cypress St, Raqqa, Syria',
-            phone_number: '963902345683'
-        },
-        {
-            national_id: '11223344556',
-            first_name: 'Lina',
-            last_name: 'Al-Jundi',
-            date_of_birth: '1973-02-28',
-            address: '123 Fir St, Deir ez-Zor, Syria',
-            phone_number: '963912345684'
-        },
-        {
-            national_id: '22334455667',
-            first_name: 'Said',
-            last_name: 'Al-Qudsi',
-            date_of_birth: '1997-09-15',
-            address: '456 Juniper St, Qamishli, Syria',
-            phone_number: '963922345683'
-        },
-        {
-            national_id: '33445566778',
-            first_name: 'Maya',
-            last_name: 'Al-Razi',
-            date_of_birth: '1982-07-08',
-            address: '789 Willow St, Daraa, Syria',
-            phone_number: '963932345683'
-        },
-        {
-            national_id: '44556677889',
-            first_name: 'Samir',
-            last_name: 'Al-Saadi',
-            date_of_birth: '1995-05-23',
-            address: '321 Palm St, Hama, Syria',
-            phone_number: '963942345683'
-        },
-        {
-            national_id: '55667788990',
-            first_name: 'Hala',
-            last_name: 'Al-Hasan',
-            date_of_birth: '1986-11-18',
-            address: '654 Ash St, Idlib, Syria',
-            phone_number: '963952345683'
-        },
-        {
-            national_id: '66778899001',
-            first_name: 'Amal',
-            last_name: 'Al-Fayez',
-            date_of_birth: '1991-01-12',
-            address: '987 Sycamore St, As-Suwayda, Syria',
-            phone_number: '963962345683'
-        },
-        {
-            national_id: '77889900112',
-            first_name: 'Bassam',
-            last_name: 'Al-Khayat',
-            date_of_birth: '1980-06-30',
-            address: '321 Cedar St, Damascus, Syria',
-            phone_number: '963972345683'
-        },
-        {
-            national_id: '88990011223',
-            first_name: 'Raghad',
-            last_name: 'Al-Naimi',
-            date_of_birth: '1987-09-03',
-            address: '456 Walnut St, Aleppo, Syria',
-            phone_number: '963982345683'
-        },
-        {
-            national_id: '99001122334',
-            first_name: 'Ayman',
-            last_name: 'Al-Rifai',
-            date_of_birth: '1990-11-26',
-            address: '789 Maple St, Homs, Syria',
-            phone_number: '963992345683'
-        },
-        {
-            national_id: '00112233445',
-            first_name: 'Salim',
-            last_name: 'Al-Khayat',
-            date_of_birth: '1989-01-19',
-            address: '321 Elm St, Latakia, Syria',
-            phone_number: '963902345684'
-        },
-        {
-            national_id: '11223344556',
-            first_name: 'Layla',
-            last_name: 'Al-Mudallal',
-            date_of_birth: '1992-08-22',
-            address: '456 Maple St, Aleppo, Syria',
-            phone_number: '963912345685'
-        },
-        {
-            national_id: '22334455667',
-            first_name: 'Nidal',
-            last_name: 'Al-Hilal',
-            date_of_birth: '1977-12-30',
-            address: '789 Oak St, Homs, Syria',
-            phone_number: '963922345684'
-        },
-        {
-            national_id: '33445566778',
-            first_name: 'Dina',
-            last_name: 'Al-Jundi',
-            date_of_birth: '1985-10-22',
-            address: '321 Pine St, Latakia, Syria',
-            phone_number: '963932345684'
-        },
-        {
-            national_id: '44556677889',
-            first_name: 'Samir',
-            last_name: 'Al-Fayez',
-            date_of_birth: '1990-12-05',
-            address: '654 Cedar St, Tartus, Syria',
-            phone_number: '963942345684'
-        },
-        {
-            national_id: '55667788990',
-            first_name: 'Hala',
-            last_name: 'Al-Khayat',
-            date_of_birth: '1973-02-28',
-            address: '987 Cypress St, Raqqa, Syria',
-            phone_number: '963952345684'
-        },
-        {
-            national_id: '66778899001',
-            first_name: 'Amal',
-            last_name: 'Al-Masri',
-            date_of_birth: '1997-09-15',
-            address: '123 Fir St, Deir ez-Zor, Syria',
-            phone_number: '963962345684'
-        },
-        {
-            national_id: '77889900112',
-            first_name: 'Bassam',
-            last_name: 'Al-Mudallal',
-            date_of_birth: '1982-07-08',
-            address: '456 Juniper St, Qamishli, Syria',
-            phone_number: '963972345684'
-        },
-        {
-            national_id: '88990011223',
-            first_name: 'Raghad',
-            last_name: 'Al-Razi',
-            date_of_birth: '1995-05-23',
-            address: '789 Willow St, Daraa, Syria',
-            phone_number: '963982345684'
-        },
-        {
-            national_id: '99001122334',
-            first_name: 'Ayman',
-            last_name: 'Al-Saadi',
-            date_of_birth: '1986-11-18',
-            address: '321 Palm St, Hama, Syria',
-            phone_number: '963992345684'
-        },
-        {
-            national_id: '00112233445',
-            first_name: 'Layla',
-            last_name: 'Al-Hasan',
-            date_of_birth: '1991-01-12',
-            address: '654 Ash St, Idlib, Syria',
-            phone_number: '963902345685'
-        },
-        {
-            national_id: '11223344556',
-            first_name: 'Nidal',
-            last_name: 'Al-Fayez',
-            date_of_birth: '1974-04-25',
-            address: '987 Sycamore St, As-Suwayda, Syria',
-            phone_number: '963912345686'
-        },
-        {
-            national_id: '22334455667',
-            first_name: 'Dina',
-            last_name: 'Al-Rifai',
-            date_of_birth: '1993-03-18',
-            address: '321 Cedar St, Damascus, Syria',
-            phone_number: '963922345685'
-        }
+        // {
+        //     national_id: '11223344556',
+        //     first_name: 'Sara',
+        //     last_name: 'Al-Fayez',
+        //     date_of_birth: '1974-04-25',
+        //     address: '987 Sycamore St, As-Suwayda, Syria',
+        //     phone_number: '963912345683'
+        // },
+        // {
+        //     national_id: '22334455667',
+        //     first_name: 'Hassan',
+        //     last_name: 'Al-Hussein',
+        //     date_of_birth: '1993-03-18',
+        //     address: '321 Cedar St, Damascus, Syria',
+        //     phone_number: '963922345682'
+        // },
+        // {
+        //     national_id: '33445566778',
+        //     first_name: 'Laila',
+        //     last_name: 'Al-Fakhouri',
+        //     date_of_birth: '1980-06-30',
+        //     address: '456 Walnut St, Aleppo, Syria',
+        //     phone_number: '963932345682'
+        // },
+        // {
+        //     national_id: '44556677889',
+        //     first_name: 'Mahmoud',
+        //     last_name: 'Al-Naimi',
+        //     date_of_birth: '1987-09-03',
+        //     address: '789 Maple St, Homs, Syria',
+        //     phone_number: '963942345682'
+        // },
+        // {
+        //     national_id: '55667788990',
+        //     first_name: 'Yasmin',
+        //     last_name: 'Al-Rifai',
+        //     date_of_birth: '1990-11-26',
+        //     address: '321 Elm St, Latakia, Syria',
+        //     phone_number: '963952345682'
+        // },
+        // {
+        //     national_id: '66778899001',
+        //     first_name: 'Karim',
+        //     last_name: 'Al-Khayat',
+        //     date_of_birth: '1989-01-19',
+        //     address: '456 Maple St, Aleppo, Syria',
+        //     phone_number: '963962345682'
+        // },
+        // {
+        //     national_id: '77889900112',
+        //     first_name: 'Aisha',
+        //     last_name: 'Al-Mudallal',
+        //     date_of_birth: '1992-08-22',
+        //     address: '789 Oak St, Homs, Syria',
+        //     phone_number: '963972345682'
+        // },
+        // {
+        //     national_id: '88990011223',
+        //     first_name: 'Fadi',
+        //     last_name: 'Al-Hilal',
+        //     date_of_birth: '1977-12-30',
+        //     address: '321 Pine St, Latakia, Syria',
+        //     phone_number: '963982345682'
+        // },
+        // {
+        //     national_id: '99001122334',
+        //     first_name: 'Rana',
+        //     last_name: 'Al-Hindi',
+        //     date_of_birth: '1985-10-22',
+        //     address: '654 Cedar St, Tartus, Syria',
+        //     phone_number: '963992345682'
+        // },
+        // {
+        //     national_id: '00112233445',
+        //     first_name: 'Tamer',
+        //     last_name: 'Al-Zein',
+        //     date_of_birth: '1990-12-05',
+        //     address: '987 Cypress St, Raqqa, Syria',
+        //     phone_number: '963902345683'
+        // },
+        // {
+        //     national_id: '11223344556',
+        //     first_name: 'Lina',
+        //     last_name: 'Al-Jundi',
+        //     date_of_birth: '1973-02-28',
+        //     address: '123 Fir St, Deir ez-Zor, Syria',
+        //     phone_number: '963912345684'
+        // },
+        // {
+        //     national_id: '22334455667',
+        //     first_name: 'Said',
+        //     last_name: 'Al-Qudsi',
+        //     date_of_birth: '1997-09-15',
+        //     address: '456 Juniper St, Qamishli, Syria',
+        //     phone_number: '963922345683'
+        // },
+        // {
+        //     national_id: '33445566778',
+        //     first_name: 'Maya',
+        //     last_name: 'Al-Razi',
+        //     date_of_birth: '1982-07-08',
+        //     address: '789 Willow St, Daraa, Syria',
+        //     phone_number: '963932345683'
+        // },
+        // {
+        //     national_id: '44556677889',
+        //     first_name: 'Samir',
+        //     last_name: 'Al-Saadi',
+        //     date_of_birth: '1995-05-23',
+        //     address: '321 Palm St, Hama, Syria',
+        //     phone_number: '963942345683'
+        // },
+        // {
+        //     national_id: '55667788990',
+        //     first_name: 'Hala',
+        //     last_name: 'Al-Hasan',
+        //     date_of_birth: '1986-11-18',
+        //     address: '654 Ash St, Idlib, Syria',
+        //     phone_number: '963952345683'
+        // },
+        // {
+        //     national_id: '66778899001',
+        //     first_name: 'Amal',
+        //     last_name: 'Al-Fayez',
+        //     date_of_birth: '1991-01-12',
+        //     address: '987 Sycamore St, As-Suwayda, Syria',
+        //     phone_number: '963962345683'
+        // },
+        // {
+        //     national_id: '77889900112',
+        //     first_name: 'Bassam',
+        //     last_name: 'Al-Khayat',
+        //     date_of_birth: '1980-06-30',
+        //     address: '321 Cedar St, Damascus, Syria',
+        //     phone_number: '963972345683'
+        // },
+        // {
+        //     national_id: '88990011223',
+        //     first_name: 'Raghad',
+        //     last_name: 'Al-Naimi',
+        //     date_of_birth: '1987-09-03',
+        //     address: '456 Walnut St, Aleppo, Syria',
+        //     phone_number: '963982345683'
+        // },
+        // {
+        //     national_id: '99001122334',
+        //     first_name: 'Ayman',
+        //     last_name: 'Al-Rifai',
+        //     date_of_birth: '1990-11-26',
+        //     address: '789 Maple St, Homs, Syria',
+        //     phone_number: '963992345683'
+        // },
+        // {
+        //     national_id: '00112233445',
+        //     first_name: 'Salim',
+        //     last_name: 'Al-Khayat',
+        //     date_of_birth: '1989-01-19',
+        //     address: '321 Elm St, Latakia, Syria',
+        //     phone_number: '963902345684'
+        // },
+        // {
+        //     national_id: '11223344556',
+        //     first_name: 'Layla',
+        //     last_name: 'Al-Mudallal',
+        //     date_of_birth: '1992-08-22',
+        //     address: '456 Maple St, Aleppo, Syria',
+        //     phone_number: '963912345685'
+        // },
+        // {
+        //     national_id: '22334455667',
+        //     first_name: 'Nidal',
+        //     last_name: 'Al-Hilal',
+        //     date_of_birth: '1977-12-30',
+        //     address: '789 Oak St, Homs, Syria',
+        //     phone_number: '963922345684'
+        // },
+        // {
+        //     national_id: '33445566778',
+        //     first_name: 'Dina',
+        //     last_name: 'Al-Jundi',
+        //     date_of_birth: '1985-10-22',
+        //     address: '321 Pine St, Latakia, Syria',
+        //     phone_number: '963932345684'
+        // },
+        // {
+        //     national_id: '44556677889',
+        //     first_name: 'Samir',
+        //     last_name: 'Al-Fayez',
+        //     date_of_birth: '1990-12-05',
+        //     address: '654 Cedar St, Tartus, Syria',
+        //     phone_number: '963942345684'
+        // },
+        // {
+        //     national_id: '55667788990',
+        //     first_name: 'Hala',
+        //     last_name: 'Al-Khayat',
+        //     date_of_birth: '1973-02-28',
+        //     address: '987 Cypress St, Raqqa, Syria',
+        //     phone_number: '963952345684'
+        // },
+        // {
+        //     national_id: '66778899001',
+        //     first_name: 'Amal',
+        //     last_name: 'Al-Masri',
+        //     date_of_birth: '1997-09-15',
+        //     address: '123 Fir St, Deir ez-Zor, Syria',
+        //     phone_number: '963962345684'
+        // },
+        // {
+        //     national_id: '77889900112',
+        //     first_name: 'Bassam',
+        //     last_name: 'Al-Mudallal',
+        //     date_of_birth: '1982-07-08',
+        //     address: '456 Juniper St, Qamishli, Syria',
+        //     phone_number: '963972345684'
+        // },
+        // {
+        //     national_id: '88990011223',
+        //     first_name: 'Raghad',
+        //     last_name: 'Al-Razi',
+        //     date_of_birth: '1995-05-23',
+        //     address: '789 Willow St, Daraa, Syria',
+        //     phone_number: '963982345684'
+        // },
+        // {
+        //     national_id: '99001122334',
+        //     first_name: 'Ayman',
+        //     last_name: 'Al-Saadi',
+        //     date_of_birth: '1986-11-18',
+        //     address: '321 Palm St, Hama, Syria',
+        //     phone_number: '963992345684'
+        // },
+        // {
+        //     national_id: '00112233445',
+        //     first_name: 'Layla',
+        //     last_name: 'Al-Hasan',
+        //     date_of_birth: '1991-01-12',
+        //     address: '654 Ash St, Idlib, Syria',
+        //     phone_number: '963902345685'
+        // },
+        // {
+        //     national_id: '11223344556',
+        //     first_name: 'Nidal',
+        //     last_name: 'Al-Fayez',
+        //     date_of_birth: '1974-04-25',
+        //     address: '987 Sycamore St, As-Suwayda, Syria',
+        //     phone_number: '963912345686'
+        // },
+        // {
+        //     national_id: '22334455667',
+        //     first_name: 'Dina',
+        //     last_name: 'Al-Rifai',
+        //     date_of_birth: '1993-03-18',
+        //     address: '321 Cedar St, Damascus, Syria',
+        //     phone_number: '963922345685'
+        // }
     ]);
     await ShipmentPriority.bulkCreate([
         { priority: "عادي", additional_wages: 0 },
