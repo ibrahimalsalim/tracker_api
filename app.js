@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 app.use(cors({
-  origin : "*"
+  origin : "http://127.0.0.1:5500"
 }
 ));
 const { notFound, errorHanlder } = require("./middlewares/errors")
