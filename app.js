@@ -5,7 +5,7 @@ const app = express();
 const corsOptions = {
   origin: 'http://127.0.0.1:5500',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+   allowedHeaders: ['Content-Type', 'Authorization', 'token'],
   optionsSuccessStatus: 200 // Some legacy browsers (IE11) may not handle 204
 };
 
