@@ -2,12 +2,20 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
-app.use(cors());
-app.options('*', cors());
+const corsOptions = {
+  origin: '*', // Adjust as needed, or specify specific origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  optionsSuccessStatus: 200 // Some legacy browsers (IE11) may not handle 204
+};
+
+// Use CORS middleware
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 const { notFound, errorHanlder } = require("./middlewares/errors")
 const logger = require("./middlewares/logger")
-require("dotenv").config(
+require("dotenv").config()
 
 
 app.use(express.json());
