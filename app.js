@@ -3,12 +3,11 @@ const cors = require("cors");
 const app = express();
 
 app.use(cors());
+app.options('*', cors());
 
 const { notFound, errorHanlder } = require("./middlewares/errors")
 const logger = require("./middlewares/logger")
-
-// const helmet = require("helmet");
-require("dotenv").config()
+require("dotenv").config(
 
 
 app.use(express.json());
