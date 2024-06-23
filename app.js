@@ -2,18 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
-const corsOptions = {
-    origin: '*', // Replace with your client's origin
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // If you need to send cookies or authentication headers
-    optionsSuccessStatus: 204 // Some legacy browsers (IE11, various SmartTVs) choke on 204
-};
-
-// Enable CORS with the specified options
-app.use(cors(corsOptions));
-
-// Handle pre-flight requests
-app.options('*', cors(corsOptions));
+app.use(cors());
 
 const { notFound, errorHanlder } = require("./middlewares/errors")
 const logger = require("./middlewares/logger")
