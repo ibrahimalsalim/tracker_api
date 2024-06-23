@@ -3,13 +3,12 @@ const cors = require("cors");
 const app = express();
 
 const corsOptions = {
-  origin: '*', // Adjust as needed, or specify specific origins
+  origin: 'http://127.0.0.1:5500',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   optionsSuccessStatus: 200 // Some legacy browsers (IE11) may not handle 204
 };
 
-// Use CORS middleware
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
@@ -21,11 +20,6 @@ require("dotenv").config()
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(logger)
-
-
-
-
-// app.use(helmet());
 
 
 app.use("/api/auth", require("./routes/auth"));
@@ -44,4 +38,4 @@ app.use(errorHanlder);
 
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server is running in ${process.env.NODE_ENV} mode on ppppppport ${PORT}`));
+app.listen(PORT, () => console.log(`Server is running in ${process.env.NODE_ENV} mode on ppppppp00000ort ${PORT}`));
