@@ -3,7 +3,7 @@ const cors = require("cors");
 const app = express();
 
 const corsOptions = {
-    origin: 'http://127.0.0.1:5500', // Replace with your client's origin
+    origin: '*', // Replace with your client's origin
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // If you need to send cookies or authentication headers
     optionsSuccessStatus: 204 // Some legacy browsers (IE11, various SmartTVs) choke on 204
