@@ -5,7 +5,7 @@ function verifyToken(req, res, next) {
   const token = req.headers.token;
   if (token) {
     try {
-      const decoded = jwt.verify(token, "process.env.JWT_SECRET_KEY");
+      const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
       req.user = decoded;
       next();
     } catch (error) {
@@ -50,7 +50,7 @@ function verifyTokenAndManager(req, res, next) {
 
 function verifyAdminOrManager(req, res, next) {
   verifyToken(req, res, () => {
-    if (req.user.type == 1 ||req.user.type == 2) {
+    if (req.user.type == 1 || req.user.type == 2) {
       next();
     } else {
 

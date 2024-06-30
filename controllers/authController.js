@@ -14,6 +14,7 @@ const { User, UserType } = require("../config/database")
  *  @access  public
  */
 module.exports.register = asyncHandler(async (req, res) => {
+  console.log(req.body);
   const { error } = validateRegisterUser(req.body)
   if (error) {
     return res.status(400).json({ message: error.details[0].message });

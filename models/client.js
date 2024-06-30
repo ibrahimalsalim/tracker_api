@@ -37,32 +37,37 @@ ClientModel = (sequelize) => {
 
   return Client;
 };
-function validateNewClient(obj) {
-  const schema = Joi.object({
-    national_id: Joi.string().min(11).max(11).required(),
-    first_name: Joi.string().trim().min(3).max(30).pattern(/^[\u0600-\u06FFa-zA-Z\s-]+$/).required(),
-    last_name: Joi.string().trim().min(3).max(30).pattern(/^[\u0600-\u06FFa-zA-Z\s-]+$/).required(),
-    date_of_birth: Joi.date()
-      .less('now')
-      .greater('1920-06-01')
-      .custom((value, helpers) => {
-        const today = new Date();
-        const birthDate = new Date(value);
-        let age = today.getFullYear() - birthDate.getFullYear();
-        const monthDifference = today.getMonth() - birthDate.getMonth();
-        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
-          age--;
-        }
-        if (age < 18) {
-          return helpers.message('age must be at least 18 years old');
-        }
-        return value;
-      })
-      .required(),
 
-    address: Joi.string().trim().min(5).max(100).required(),
-    phone_number: Joi.string().trim().min(10).required(),
-  });
+const clientSchema = {
+  national_id: Joi.string().pattern(/^\d{11}$/).required().messages({
+    'string.pattern.base': '"national_id" must be exactly 11 digits long and contain only numbers'
+  }),
+  first_name: Joi.string().trim().min(3).max(30).pattern(/^[\u0600-\u06FFa-zA-Z\s-]+$/).required(),
+  last_name: Joi.string().trim().min(3).max(30).pattern(/^[\u0600-\u06FFa-zA-Z\s-]+$/).required(),
+  date_of_birth: Joi.date()
+    .less('now')
+    .greater('1920-06-01')
+    .custom((value, helpers) => {
+      const today = new Date();
+      const birthDate = new Date(value);
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const monthDifference = today.getMonth() - birthDate.getMonth();
+      if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      if (age < 18) {
+        return helpers.message('age must be at least 18 years old');
+      }
+      return value;
+    })
+    .required(),
+
+  address: Joi.string().trim().min(5).max(100).required(),
+  phone_number: Joi.string().trim().min(10).required(),
+}
+
+function validateNewClient(obj) {
+  const schema = Joi.object(clientSchema);
   return schema.validate(obj);
 }
 function validateUpdateClient(obj) {
@@ -97,5 +102,6 @@ function validateUpdateClient(obj) {
 module.exports = {
   ClientModel,
   validateNewClient,
-  validateUpdateClient
+  validateUpdateClient,
+  clientSchema
 }
