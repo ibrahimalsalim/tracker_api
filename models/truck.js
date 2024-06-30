@@ -11,6 +11,10 @@ TruckModel = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    center_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     type: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -28,6 +32,11 @@ TruckModel = (sequelize) => {
       type: DataTypes.STRING(30),
       allowNull: true,
       defaultValue: null
+    },
+    is_ready: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
     }
   });
 
@@ -37,6 +46,7 @@ TruckModel = (sequelize) => {
 function validateNewTruck(obj) {
   const schema = Joi.object({
     driver: Joi.number().integer().min(0).required(),
+    center_id: Joi.number().integer().min(0).required(),
     type: Joi.number().integer().min(0).required(),
     model: Joi.string().trim().min(5).max(50).required(),
   });
@@ -46,6 +56,7 @@ function validateNewTruck(obj) {
 function validateUpdateTruck(obj) {
   const schema = Joi.object({
     driver: Joi.number().integer().min(0).optional(),
+    center_id: Joi.number().integer().min(0).optional(),
     type: Joi.number().integer().min(0).optional(),
     model: Joi.string().trim().min(5).max(50).optional(),
   });

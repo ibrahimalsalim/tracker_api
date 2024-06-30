@@ -14,7 +14,7 @@ UserModel = (sequelize) => {
     },
     type: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
     },
     first_name: {
       type: DataTypes.STRING(30),
@@ -94,9 +94,9 @@ function generateToken(user) {
 }
 function validateUpdateUser(obj) {
   const schema = Joi.object({
-    type: Joi.number().integer().required(),
-    first_name: Joi.string().trim().min(3).max(100).pattern(/^[\u0600-\u06FFa-zA-Z\s]+$/).required(),
-    last_name: Joi.string().trim().min(3).max(100).pattern(/^[\u0600-\u06FFa-zA-Z\s]+$/).required(),
+    type: Joi.number().integer().optional(),
+    first_name: Joi.string().trim().min(3).max(100).pattern(/^[\u0600-\u06FFa-zA-Z\s]+$/).optional(),
+    last_name: Joi.string().trim().min(3).max(100).pattern(/^[\u0600-\u06FFa-zA-Z\s]+$/).optional(),
     date_of_birth: Joi.date()
       .less('now')
       .greater('1920-06-01')
@@ -113,11 +113,10 @@ function validateUpdateUser(obj) {
         }
         return value;
       })
-      .required(),
+      .optional(),
     address: Joi.string(),  //not final
-    email: Joi.string().trim().min(5).max(100).required().email(),
-    username: Joi.string().trim().min(2).max(200).required(),
-    password: passwordComplexity().required(),
+    email: Joi.string().trim().min(5).max(100).email().optional(),
+    username: Joi.string().trim().min(2).max(200).optional(),
   });
   return schema.validate(obj);
 }

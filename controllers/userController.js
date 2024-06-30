@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
-const { User } = require("../config/database");
+const { User, UserType } = require("../config/database");
 const { validateUpdateUser, hashPassword } = require("../models/user");
-const paginate = require("../utils/pagination")
+const paginate = require("../utils/pagination");
 
 /**
  *  @desc    Get All Users
@@ -17,13 +17,31 @@ module.exports.getAllUsers = asyncHandler(async (req, res) => {
     const { totalPages, offset } = paginate(page, limit, totalItems)
 
     const users = await User.findAll({
-        attributes: { exclude: ['password'] },
+        attributes: { exclude: ['password', 'type'] },
+        include: [{
+            model: UserType,
+        }],
         limit,
         offset
     });
 
+    const flattenedUsers = users.map(user => {
+        const userData = user.toJSON();
+        return {
+            id: userData.id,
+            FirstName: userData.first_name,
+            LastName: userData.last_name,
+            date_of_birth: userData.date_of_birth,
+            Address: userData.address,
+            email: userData.email,
+            username: userData.username,
+            typeId: userData.user_type.id,
+            type: userData.user_type.type,
+        };
+    });
+
     res.status(200).json({
-        data: users,
+        data: flattenedUsers,
         meta: {
             currentPage: Number(page),
             pageSize: limit,
@@ -42,10 +60,27 @@ module.exports.getUserById = asyncHandler(async (req, res) => {
     const user = await User.findByPk(
         req.params.id,
         {
-            attributes: { exclude: ['password'] }
-        });
+            attributes: { exclude: ['password', 'type'] },
+            include: [{
+                model: UserType,
+            }],
+        }
+    );
     if (user) {
-        res.status(200).json(user.toJSON());
+        const userData = user.toJSON();
+        console.log(userData);
+        const flatteneduser = {
+            id: userData.id,
+            FirstName: userData.first_name,
+            LastName: userData.last_name,
+            date_of_birth: userData.date_of_birth,
+            Address: userData.address,
+            email: userData.email,
+            username: userData.username,
+            typeId: userData.user_type.id,
+            type: userData.user_type.type,
+        };
+        res.status(200).json(flatteneduser);
     } else {
         res.status(404).json({ message: "User not found" });
     }

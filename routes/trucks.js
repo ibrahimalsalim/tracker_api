@@ -1,6 +1,9 @@
 const express = require("express")
 const {
     getAllTrucks,
+    getTruckById,
+    getTruckByCenterId,
+    getTruckReadyToloadingByCenterId,
     addNewTruck,
     updateTruck,
     deleteTruck
@@ -22,5 +25,10 @@ router.route("/:id")
     .put(verifyAdminOrManager ,updateTruck)
     .delete(verifyAdminOrManager ,deleteTruck)
 
+    router.get("/id/:id" , getTruckById )
+
+    router.get("/centerId/:id" , getTruckByCenterId )
+
+    router.get("/readytoloading/:id" , getTruckReadyToloadingByCenterId )
 
 module.exports = router;
