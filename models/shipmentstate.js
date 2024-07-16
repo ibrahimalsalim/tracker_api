@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-
+const Joi = require("joi")
 ShipmentStateModel = (sequelize) => {
   const ShipmentState = sequelize.define('shipment_state', {
     id: {
@@ -17,18 +17,26 @@ ShipmentStateModel = (sequelize) => {
     },
     start_date: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true
     },
     end_date: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true
     }
   });
 
   return ShipmentState;
 };
 
+function validateUpdateShipmentState(obj) {
+  const schema = Joi.object({
+    shipment_id: Joi.number().integer().min(0).required(),
+    states_id: Joi.number().integer().min(0).required(),
+  });
+  return schema.validate(obj);
+}
 
 module.exports = {
-  ShipmentStateModel
+  ShipmentStateModel,
+  validateUpdateShipmentState
 }

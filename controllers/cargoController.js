@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const { Cargo, User, Client, Shipment, CargoContent, ContentType, sequelize } = require("../config/database");
+const { Cargo, Client, Shipment, CargoContent, ContentType, sequelize } = require("../config/database");
 const { validateNewCargo, validateUpdateCargo } = require("../models/cargo");
 const paginate = require("../utils/pagination");
 

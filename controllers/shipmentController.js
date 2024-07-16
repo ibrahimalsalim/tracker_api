@@ -2,7 +2,8 @@ const asyncHandler = require("express-async-handler");
 const { Shipment, ShipmentType, User, Center, Truck, ShipmentPriority, ShipmentState, State } = require("../config/database");
 const { validateNewShipment, validateUpdateShipment } = require("../models/shipment");
 const paginate = require("../utils/pagination");
-const { Op } = require("sequelize");
+const { Op, where } = require("sequelize");
+const moment = require('moment-timezone');
 
 /**
  *  @desc    Get All shipment
@@ -101,7 +102,7 @@ module.exports.getShipmentById = asyncHandler(async (req, res) => {
 });
 /**
  *  @desc    Get shipment by center id
- *  @route   /api/shipment/center/:centerId
+ *  @route   /api/shipment/centerId/:id
  *  @method  GET
  *  @access  private (admin)
  */
@@ -174,7 +175,7 @@ module.exports.getShipmentByCenterId = asyncHandler(async (req, res) => {
 });
 /**
  *  @desc    Get sent shipment by center id
- *  @route   /api/shipment/center/:centerId
+ *  @route   /api/shipment/sentshipmentbycenterid/:id
  *  @method  GET
  *  @access  private (admin)
  */
@@ -193,7 +194,7 @@ module.exports.sentShipmentByCenterId = asyncHandler(async (req, res) => {
         where: {
             send_center: req.params.id
         },
-        attributes: { exclude: ['shipment_priority_id', 'type' , 'send_center' , 'receive_center'] },
+        attributes: { exclude: ['shipment_priority_id', 'type', 'send_center', 'receive_center'] },
         include: [
             {
                 model: Center,
@@ -240,7 +241,7 @@ module.exports.sentShipmentByCenterId = asyncHandler(async (req, res) => {
 });
 /**
  *  @desc    Get received shipment by center id
- *  @route   /api/shipment/center/:centerId
+ *  @route   /api/shipment/receivedshipmentbycenterid/:id
  *  @method  GET
  *  @access  private (admin)
  */
@@ -259,7 +260,7 @@ module.exports.receivedShipmentByCenterId = asyncHandler(async (req, res) => {
         where: {
             receive_center: req.params.id
         },
-        attributes: { exclude: ['shipment_priority_id', 'type' , 'send_center' , 'receive_center'] },
+        attributes: { exclude: ['shipment_priority_id', 'type', 'send_center', 'receive_center'] },
         include: [
             {
                 model: Center,
@@ -304,6 +305,54 @@ module.exports.receivedShipmentByCenterId = asyncHandler(async (req, res) => {
         }
     });
 });
+/**
+ *  @desc    Get loading shipment by center id
+ *  @route   /api/shipment/loadingshipmentbycenterid/:id
+ *  @method  GET
+ *  @access  private (admin)
+ */
+module.exports.loadingShipmentByCenterId = asyncHandler(async (req, res) => {
+    try {
+        const shipments = await Shipment.findAll({
+            attributes: { exclude: ['shipment_priority_id', 'type', 'send_center', 'receive_center'] },
+            include: [
+                {
+                    model: Center,
+                    as: 'send',
+                    attributes: ['city'],
+                    where: { id: req.params.id }
+                }
+                ,
+                {
+                    model: Center,
+                    as: 'receive',
+                    attributes: ['city'],
+                },
+                {
+                    model: ShipmentPriority,
+                    attributes: ['priority'],
+                },
+                {
+                    model: ShipmentState,
+                }
+            ]
+        });
+        const filteredShipments = shipments.filter(shipment => {
+            const stateCount = shipment.toJSON().shipment_states.length;
+            return (stateCount - 1) % 4 === 0;
+        });
+
+        res.status(200).json({
+            success: true,
+            data: filteredShipments,
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
+});
 
 /**
  *  @desc    add new shipment
@@ -323,10 +372,9 @@ module.exports.addNewShipment = asyncHandler(async (req, res) => {
     }
 
     const truck = await Truck.findByPk(req.body.truck_id)
-    if (!truck) {
-        return res.status(400).json({ message: 'There are no truck with this ID.' });
+    if (!truck || !(truck.is_ready) || (truck.center_id != req.body.send_center)) {
+        return res.status(400).json({ message: 'There are no truck with this ID in this center.' });
     }
-
 
     const shipmentPriority = await ShipmentPriority.findByPk(req.body.shipment_priority_id)
     if (!shipmentPriority) {
@@ -340,7 +388,7 @@ module.exports.addNewShipment = asyncHandler(async (req, res) => {
     }
 
 
-    await Shipment.create({
+    const shipment = await Shipment.create({
         truck_id: req.body.truck_id,
         shipment_priority_id: req.body.shipment_priority_id,
         send_center: req.body.send_center,
@@ -348,6 +396,15 @@ module.exports.addNewShipment = asyncHandler(async (req, res) => {
     });
 
     await truck.update({ is_ready: false });
+
+
+    await ShipmentState.create({
+        shipment_id: shipment.id,
+        states_id: 1,
+        start_date: moment().tz("Etc/GMT-6").format("YYYY-MM-DD hh:mm:ss Z"),
+    });
+
+
 
     return res.status(200).json({ message: "New shipment added successfully." });
 });
