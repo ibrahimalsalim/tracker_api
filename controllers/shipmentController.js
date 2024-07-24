@@ -22,6 +22,10 @@ module.exports.getAllShipments = asyncHandler(async (req, res) => {
         attributes: { exclude: ['shipment_priority_id', 'type', 'send_center', 'receive_center'] },
         include: [
             {
+                model: Truck,
+                attributes: ['type'],
+            },
+            {
                 model: Center,
                 as: 'send',
                 attributes: ['city'],
@@ -70,6 +74,10 @@ module.exports.getShipmentById = asyncHandler(async (req, res) => {
         {
             attributes: { exclude: ['shipment_priority_id', 'type', 'send_center', 'receive_center'] },
             include: [
+                {
+                    model: Truck,
+                    attributes: ['type'],
+                },
                 {
                     model: Center,
                     as: 'send',
@@ -130,6 +138,10 @@ module.exports.getShipmentByCenterId = asyncHandler(async (req, res) => {
         ,
         attributes: { exclude: ['shipment_priority_id', 'type', 'send_center', 'receive_center'] },
         include: [
+            {
+                model: Truck,
+                attributes: ['type'],
+            },
             {
                 model: Center,
                 as: 'send',
@@ -197,6 +209,10 @@ module.exports.sentShipmentByCenterId = asyncHandler(async (req, res) => {
         attributes: { exclude: ['shipment_priority_id', 'type', 'send_center', 'receive_center'] },
         include: [
             {
+                model: Truck,
+                attributes: ['type'],
+            },
+            {
                 model: Center,
                 as: 'send',
                 attributes: ['city'],
@@ -263,6 +279,10 @@ module.exports.receivedShipmentByCenterId = asyncHandler(async (req, res) => {
         attributes: { exclude: ['shipment_priority_id', 'type', 'send_center', 'receive_center'] },
         include: [
             {
+                model: Truck,
+                attributes: ['type'],
+            },
+            {
                 model: Center,
                 as: 'send',
                 attributes: ['city'],
@@ -316,6 +336,10 @@ module.exports.loadingShipmentByCenterId = asyncHandler(async (req, res) => {
         const shipments = await Shipment.findAll({
             attributes: { exclude: ['shipment_priority_id', 'type', 'send_center', 'receive_center'] },
             include: [
+                {
+                    model: Truck,
+                    attributes: ['type'],
+                },
                 {
                     model: Center,
                     as: 'send',
