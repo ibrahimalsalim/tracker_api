@@ -17,11 +17,14 @@ ShipmentStateModel = (sequelize) => {
     },
     start_date: {
       type: DataTypes.DATE,
-      allowNull: true
+      allowNull: true,
+      defaultValue: null
+
     },
     end_date: {
       type: DataTypes.DATE,
-      allowNull: true
+      allowNull: true,
+      defaultValue: null
     }
   });
 
