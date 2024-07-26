@@ -430,7 +430,10 @@ module.exports.addNewShipment = asyncHandler(async (req, res) => {
 
 
 
-    return res.status(200).json({ message: "New shipment added successfully." });
+    return res.status(200).json({
+        success: true,
+        newShipment: shipment,
+    });
 });
 
 /**
