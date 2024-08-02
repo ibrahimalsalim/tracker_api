@@ -250,6 +250,38 @@ module.exports.getTruckReadyToloadingByCenterId = asyncHandler(async (req, res) 
 });
 
 /**
+ *  @desc    Get Coordinates of truck by shipment id
+ *  @route   /api/truck/shipmentid/:Id
+ *  @method  GET
+ *  @access  private (admin)
+ */
+module.exports.getCoordinatesByShipmentId = asyncHandler(async (req, res) => {
+
+    const shipment = await Shipment.findOne({
+        where: { id: req.params.id },
+        attributes: ["id"],
+        include:
+        {
+            model: Truck,
+            attributes: ["id", "longitude", "latitude"],
+        }
+    });
+
+    if (!shipment) {
+        return res.status(400).json({ message: 'There is no shipment with this ID.' });
+    }
+
+    console.log(shipment);
+
+    res.status(200).json({
+        truckId: shipment.truck.id,
+        latitude: shipment.truck.latitude,
+        longitude: shipment.truck.longitude,
+    })
+
+});
+
+/**
  *  @desc    add new truck
  *  @route   /api/truck
  *  @method  Post

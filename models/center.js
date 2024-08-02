@@ -16,10 +16,16 @@ CenterModel = (sequelize) => {
       type: DataTypes.STRING(30),
       allowNull: false
     },
-    location: {
+    latitude: {
       type: DataTypes.STRING(30),
-      allowNull: false
-    }
+      allowNull: true,
+      defaultValue: null
+    },
+    longitude: {
+      type: DataTypes.STRING(30),
+      allowNull: true,
+      defaultValue: null
+    },
   });
 
   return Center;

@@ -1506,14 +1506,14 @@ const insertInitialData = async () => {
             center_id: 1,
             type: 2,
             model: "volvo FH16 2020",
-            is_ready: false
+            is_ready: true
         },
         {
             driver: 7,
             center_id: 1,
             type: 1,
             model: "scania R730 2021",
-            is_ready: false,
+            is_ready: true,
         },
         {
             driver: 8,
@@ -2122,10 +2122,3 @@ const insertInitialData = async () => {
     ]
     );
 };
-
-// cargoContent = {
-//     cargo_id : , //fk to cargo
-//     content_type_id : ,//fk to contentType (1,2,3 or 4)
-//     quantity : ,
-//     weight :
-// }

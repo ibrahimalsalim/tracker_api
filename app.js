@@ -19,8 +19,9 @@ require("dotenv").config()
 
 const { notFound, errorHanlder } = require("./middlewares/errors")
 const logger = require("./middlewares/logger");
-const { Truck } = require('./config/database');
+const { sequelize, Truck, Shipment, ShipmentState, Center } = require('./config/database');
 const { where } = require('sequelize');
+const { log } = require('console');
 
 
 
@@ -52,31 +53,92 @@ app.use("/api/users", require("./routes/users"));
 app.use("/api/usertypes", require("./routes/userTypes"));
 app.use("/api/cargos", require("./routes/cargos"));
 
+app.get("/test", asyncHandler(async (req, res) => {
+  const trucks = await Truck.findAll({
+    where: { is_ready: false },
+    attributes: ["id", "longitude", "latitude"],
+    include:
+    {
+      model: Shipment,
+      where: { truck_id: sequelize.col('id') },
+      attributes: { exclude: ["id", 'truck_id', 'shipment_priority_id', 'type'] },
+      required: false,
+      limit: 1,
+      order: [['id', 'DESC']],
+      include: [
+        {
+          model: Center,
+          as: 'send',
+          attributes: ['longitude', "latitude"],
+        },
+        {
+          model: Center,
+          as: 'receive',
+          attributes: ['longitude', "latitude"],
+        },
+        {
+          model: ShipmentState,
+          attributes: [],
+        }
+      ]
+    }
+  });
+  res.json(trucks)
+}))
 
+io.on('connection', asyncHandler(async (socket) => {
+  console.log('a user connected');
 
-io.on('connection', (socket) => {
-
-  socket.on('updateinfo', asyncHandler(async (info) => {
-
-    // validation  
-
+  socket.on('updateLocation', async (data) => {
+    const { truckId, latitude, longitude, speed } = data;
     await Truck.update(
       {
-        latitude: info.location.lat,
-        longitude: info.location.lon
+        latitude: latitude,
+        longitude: longitude,
+        // speed: speed,
       },
       {
-        where: {
-          id: info.truckId
+        where: { id: truckId }
+      }
+    );
+    console.log(data);
+  });
+
+  const trucks = await Truck.findAll({
+    where: { is_ready: false },
+    attributes: ["id", "longitude", "latitude"],
+    include:
+    {
+      model: Shipment,
+      where: { truck_id: sequelize.col('id') },
+      attributes: { exclude: ["id", 'truck_id', 'shipment_priority_id', 'type'] },
+      required: false,
+      limit: 1,
+      order: [['id', 'DESC']],
+      include: [
+        {
+          model: Center,
+          as: 'send',
+          attributes: ['longitude', "latitude"],
+        },
+        {
+          model: Center,
+          as: 'receive',
+          attributes: ['longitude', "latitude"],
+        },
+        {
+          model: ShipmentState,
+          attributes: [],
         }
-      });
-    console.log(info);
-    io.emit('infoupdated', info);
-  })
-  )
-})
+      ]
+    }
+  });
+  io.emit('trucksData', trucks);
 
-
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+}))
 
 
 app.use(notFound);
