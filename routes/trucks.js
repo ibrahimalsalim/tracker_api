@@ -5,6 +5,7 @@ const {
     getTruckByCenterId,
     getTruckReadyToloadingByCenterId,
     getCoordinatesByShipmentId,
+    getTruckAndHisShipmentById,
     addNewTruck,
     updateTruck,
     deleteTruck
@@ -33,5 +34,7 @@ router.get("/centerId/:id", getTruckByCenterId)
 router.get("/readytoloading/:id", getTruckReadyToloadingByCenterId)
 
 router.get("/shipmentid/:id", getCoordinatesByShipmentId)
+
+router.get("/userid/:id", getTruckAndHisShipmentById)
 
 module.exports = router;

@@ -280,6 +280,42 @@ module.exports.getCoordinatesByShipmentId = asyncHandler(async (req, res) => {
     })
 
 });
+/**
+ *  @desc    Get truck and his shipment by user id (driver)
+ *  @route   /api/truck/userid/:Id
+ *  @method  GET
+ *  @access  private (admin)
+ */
+module.exports.getTruckAndHisShipmentById = asyncHandler(async (req, res) => {
+
+    const truck = await Truck.findOne({
+        where: { driver: req.params.id },
+        attributes: ["id", "latitude", "longitude"],
+        include:
+        {
+            model: Shipment,
+            attributes: { exclude: ["send_center", "receive_center", "shipment_priority_id", "truck_id"] },
+            limit: 1,
+            order: [['id', 'DESC']],
+            include: [
+                {
+                    model: Center,
+                    as: 'send',
+                },
+                {
+                    model: Center,
+                    as: 'receive',
+                }]
+        }
+    });
+
+    if (!truck) {
+        return res.status(400).json({ message: 'There is no no truck to this driver' });
+    }
+
+    res.status(200).json(truck)
+
+});
 
 /**
  *  @desc    add new truck

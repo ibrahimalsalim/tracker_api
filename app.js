@@ -60,11 +60,9 @@ app.get("/test", asyncHandler(async (req, res) => {
     include:
     {
       model: Shipment,
-      where: { truck_id: sequelize.col('id') },
-      attributes: { exclude: ["id", 'truck_id', 'shipment_priority_id', 'type'] },
-      required: false,
-      limit: 1,
+      // attributes: ["send_center" , "receive_center"],
       order: [['id', 'DESC']],
+      limit: 1,
       include: [
         {
           model: Center,
@@ -90,7 +88,8 @@ io.on('connection', asyncHandler(async (socket) => {
   console.log('a user connected');
 
   socket.on('updateLocation', async (data) => {
-    const { truckId, latitude, longitude, speed } = data;
+    const { id, latitude, longitude, speed } = data;
+
     await Truck.update(
       {
         latitude: latitude,
@@ -98,7 +97,7 @@ io.on('connection', asyncHandler(async (socket) => {
         // speed: speed,
       },
       {
-        where: { id: truckId }
+        where: { id }
       }
     );
     console.log(data);
@@ -106,12 +105,10 @@ io.on('connection', asyncHandler(async (socket) => {
 
   const trucks = await Truck.findAll({
     where: { is_ready: false },
-    attributes: ["id", "longitude", "latitude"],
     include:
     {
       model: Shipment,
       where: { truck_id: sequelize.col('id') },
-      attributes: { exclude: ["id", 'truck_id', 'shipment_priority_id', 'type'] },
       required: false,
       limit: 1,
       order: [['id', 'DESC']],
