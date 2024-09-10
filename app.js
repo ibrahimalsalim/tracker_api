@@ -137,7 +137,7 @@ io.on('connection', asyncHandler(async (socket) => {
   });
 }))
 
-
+console.log(process.cwd())
 app.use(notFound);
 app.use(errorHanlder);
 
